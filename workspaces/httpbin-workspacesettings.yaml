@@ -1,0 +1,18 @@
+apiVersion: admin.gloo.solo.io/v2
+kind: WorkspaceSettings
+metadata:
+  name: httpbin
+  namespace: httpbin
+spec:
+  # importFrom: 
+  exportTo:
+  - workspaces:
+    - name: gateways
+    resources:
+    - kind: SERVICE
+      labels:
+        app: httpbin
+    - kind: VIRTUAL_DESTINATION
+      labels:
+        app: httpbin
+    - kind: API_DOC

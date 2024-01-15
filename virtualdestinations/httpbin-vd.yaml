@@ -1,0 +1,19 @@
+apiVersion: networking.gloo.solo.io/v2
+kind: VirtualDestination
+metadata:
+  labels:
+    app: httpbin
+  name: httpbin-vd
+  namespace: httpbin
+spec:
+  hosts:
+  # Arbitrary, internal-only hostname assigned to the endpoint
+  - httpbin-vd.internal.com
+  ports:
+  - number: 8000
+    protocol: HTTP
+    targetPort:
+      number: 8000
+  services:
+    - labels:
+        app: "httpbin"
